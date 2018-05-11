@@ -26,6 +26,7 @@ class CreateArticle extends ApiRequest
             'description' => 'required|string|max:255',
             'body' => 'required|string',
             'tagList' => 'sometimes|array',
+            'video' => 'file',
         ];
     }
 }

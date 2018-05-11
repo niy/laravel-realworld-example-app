@@ -34,7 +34,7 @@ class AuthenticateWithJWT extends BaseMiddleware
         $this->auth->setRequest($request);
 
         try {
-            if (! $user = $this->auth->parseToken('token')->authenticate()) {
+            if (! $user = $this->auth->parseToken()->authenticate()) {
                 return $this->respondError('JWT error: User not found');
             }
         } catch (TokenExpiredException $e) {

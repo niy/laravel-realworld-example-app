@@ -23,7 +23,12 @@ class ArticleTransformer extends Transformer
                 'bio'       => $data['user']['bio'],
                 'image'     => $data['user']['image'],
                 'following' => $data['user']['following'],
-            ]
+            ],
+            'video' => $data['video'] !== null ? [
+                'url'               => $data['video']['url'],
+                'thumbnail_url'     => $data['video']['thumbnail_url'],
+                'upload_status'     => $data['video']['upload_status'],
+            ] : null
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\ArticleDeleted;
 use App\RealWorld\Slug\HasSlug;
 use App\RealWorld\Filters\Filterable;
 use App\RealWorld\Favorite\Favoritable;
@@ -27,6 +28,15 @@ class Article extends Model
      */
     protected $with = [
         'tags'
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'deleted' => ArticleDeleted::class,
     ];
 
     /**
@@ -84,6 +94,16 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    /**
+     * Get the video that belongs to the article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function video()
+    {
+        return $this->hasOne(Video::class);
     }
 
     /**

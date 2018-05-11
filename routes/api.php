@@ -39,6 +39,9 @@ Route::group(['namespace' => 'Api'], function () {
         ]
     ]);
 
+    Route::post('articles/{article}/video', 'ArticleVideoController@store');
+    Route::delete('articles/{article}/video', 'ArticleVideoController@destroy');
+
     Route::get('tags', 'TagController@index');
 
 });
